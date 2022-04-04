@@ -75,7 +75,7 @@ children: ReactNode
 };
 
 export type FlashCardListProps = {
-	flashCards: Flashcard[];
+flashCards: Flashcard[];
 }
 
 export type TextProps = {
@@ -86,46 +86,6 @@ variant?: Variant;
 type?: 'p' | 'span';
 size?: Size;
 };
-
-export type Ball = {
-X: number;
-Y: number;
-Width: number;
-Height: number;
-Radius: number;
-Speed: number;
-VelocityX: number;
-VelocityY: number;
-}
-
-export type BallProps = {
-x: number;
-y: number;
-width: number;
-height: number;
-radius: number;
-}
-
-export type Player = {
-ID: string;
-Score: number;
-PaddleHeight: number;
-PaddleWidth: number;
-X: number;
-Y: number;
-}
-
-export type Board = {
-Width: number;
-Height: number;
-}
-
-export type GameState = {
-PlayerOne: Player,
-PlayerTwo: Player,
-Ball: Ball,
-Board: Board;
-}
 
 type ButtonVariant = Variant | 'gray' | 'danger'
 
@@ -161,22 +121,4 @@ export type LoaderProps = {
 width: number,
 height: number,
 center: boolean,
-}
-
-export type PaddleProps = {
-width: number,
-height: number,
-offsetY: number,
-offsetX: number,
-boardWidth: number,
-type: 'left-paddle' | 'right-paddle';
-};
-
-export type ScoreBoardProps = {
-wins: number,
-loses: number
-}
-
-export type HomeSubcomponentProps = {
- nextStage: (s: string) => void
 }

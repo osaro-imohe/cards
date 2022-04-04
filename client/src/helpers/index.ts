@@ -1,5 +1,5 @@
-import { ValidBinNumbers } from "../types/shared";
-import { BinToTimeMapInSecs } from "../utils";
+import { ValidBinNumbers } from '../types/shared';
+import { BinToTimeMapInSecs } from '../utils';
 
 // eslint-disable-next-line max-len
 export const selectRandomElementInArray = (array: any[]) => array[Math.floor(Math.random() * array.length)];

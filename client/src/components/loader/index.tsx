@@ -55,4 +55,4 @@ const LoaderDark = ({ width, height, center } : LoaderProps) => (
   </div>
 );
 
-export {LoaderDark, LoaderLight};
+export { LoaderDark, LoaderLight };

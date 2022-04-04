@@ -1,12 +1,13 @@
-import { Flashcard } from "../shared";
+import { Flashcard } from '../shared';
+
 export type GetFlashCardsResponse = {
-	flashCards: Flashcard[];
+flashCards: Flashcard[];
 };
 
 export type CreateFlashCardsResponse = {
-	flashCard: Flashcard;
+flashCard: Flashcard;
 };
 
 export type UpdateFlashCardsResponse = {
-	flashCard: Flashcard;
+flashCard: Flashcard;
 }

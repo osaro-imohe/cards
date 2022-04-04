@@ -15,18 +15,24 @@ export const fetchValidFlashCards = async (): Promise<GetFlashCardsResponse> => 
   return data;
 };
 
-export const createFlashCard = async (name: string, description: string,): Promise<CreateFlashCardsResponse> => {
+export const createFlashCard = async (
+  name: string,
+  description: string,
+): Promise<CreateFlashCardsResponse> => {
   const { data } = await http.post<CreateFlashCardsResponse>(
     '/cards/create',
-    {name, description}
+    { name, description },
   );
   return data;
 };
 
-export const updateFlashCard = async(id: number, values: {[key: string]: number | string | Date}): Promise<UpdateFlashCardsResponse> => {
+export const updateFlashCard = async (
+  id: number,
+  values: {[key: string]: number | string | Date},
+): Promise<UpdateFlashCardsResponse> => {
   const { data } = await http.post<CreateFlashCardsResponse>(
     '/cards/update',
-    {id, values}
+    { id, values },
   );
   return data;
 };

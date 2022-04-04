@@ -15,7 +15,7 @@ const Input = ({
 } : InputProps) => {
   const Tag = type;
 
-  const inputWidthDict = {
+  const inputWidthDict: {[key: string]: number} = {
     xs: 54,
     sm: 167,
     md: 254,

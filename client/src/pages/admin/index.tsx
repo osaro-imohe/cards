@@ -17,10 +17,10 @@ const Admin = () => {
   const isFormDisabled = useMemo(() => {
     const { name, description } = newFlashCard;
     if (name && description && name.length && description.length) {
-      return false
+      return false;
     }
-    return true
-  }, [newFlashCard])
+    return true;
+  }, [newFlashCard]);
   const [loading, setLoading] = useState<boolean>(false);
   const [flashCards, setFlashCards] = useState<Flashcard[]>([]);
   const [createLoading, setCreateLoading] = useState<boolean>(false);
@@ -28,8 +28,8 @@ const Admin = () => {
   const fetchCards = async () => {
     try {
       setLoading(true);
-      const { flashCards } = await fetchFlashCards();
-      setFlashCards(flashCards);
+      const { flashCards: fC } = await fetchFlashCards();
+      setFlashCards(fC);
     } catch (e) {
       console.log(e);
     } finally {
@@ -48,10 +48,10 @@ const Admin = () => {
     } finally {
       setCreateLoading(false);
       setListFlashCards(true);
-    } 
-  }
+    }
+  };
   useEffect(() => {
-    fetchCards(); 
+    fetchCards();
   }, []);
 
   useEffect(() => {
@@ -59,31 +59,31 @@ const Admin = () => {
       name: '',
       description: '',
     });
-  }, [listFlashCards])
+  }, [listFlashCards]);
 
   return (
     <Page>
-      <Container fullHeight fullWidth paddingTop='30px' inline justifyContent='center'>
+      <Container fullHeight fullWidth paddingTop="30px" inline justifyContent="center">
         {(listFlashCards && loading) && (
           <LoaderDark width={50} height={50} center />
         )}
-      	{(listFlashCards && !loading) && (
-          <Container fullWidth paddingLeft='30px' paddingRight='30px'>
-            <Container inline justifyContent="space-between" fullWidth>
-              <Text text="Flashcards" />
-              <Button text="Create flashcard" variant="tertiary" onClick={() => setListFlashCards(false)}/>
-            </Container>
-            <FlashCardList flashCards={flashCards} />
+        {(listFlashCards && !loading) && (
+        <Container fullWidth paddingLeft="30px" paddingRight="30px">
+          <Container inline justifyContent="space-between" fullWidth>
+            <Text text="Flashcards" />
+            <Button text="Create flashcard" variant="tertiary" onClick={() => setListFlashCards(false)} />
           </Container>
+          <FlashCardList flashCards={flashCards} />
+        </Container>
         )}
         {!listFlashCards && (
           <Container>
-            <Input size='lg' label={true} labelText="Name" onChangeText={(name: string) => setNewFlashCard({...newFlashCard, name})}/>
-            <Input size='lg' label={true} labelText="Description" type="textarea" onChangeText={(description: string) => setNewFlashCard({...newFlashCard, description})}/>
+            <Input size="lg" label labelText="Name" onChangeText={(name: string) => setNewFlashCard({ ...newFlashCard, name })} />
+            <Input size="lg" label labelText="Description" type="textarea" onChangeText={(description: string) => setNewFlashCard({ ...newFlashCard, description })} />
             <Container justifyContent="center" inline fullWidth>
               <Container inline justifyContent="space-between" width="300px">
-                <Button text="Create" loading={createLoading} variant="tertiary" size="sm" disabled={isFormDisabled} onClick={() => createCard()}/>
-                <Button text="Cancel" variant="danger" size="sm" onClick={() => setListFlashCards(true)}/>
+                <Button text="Create" loading={createLoading} variant="tertiary" size="sm" disabled={isFormDisabled} onClick={() => createCard()} />
+                <Button text="Cancel" variant="danger" size="sm" onClick={() => setListFlashCards(true)} />
               </Container>
             </Container>
           </Container>

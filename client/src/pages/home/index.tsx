@@ -9,8 +9,8 @@ import { getNextAvailableTime } from '../../helpers';
 import { Flashcard, ValidBinNumbers } from '../../types/shared';
 
 const Home = () => {
-  const [currCard, setCurrCard]=useState<number>(0);
-  const [totalCards, setTotalCards]=useState<number>(0);
+  const [currCard, setCurrCard] = useState<number>(0);
+  const [totalCards, setTotalCards] = useState<number>(0);
   const [loading, setLoading] = useState<boolean>(false);
   const [flashCards, setFlashCards] = useState<Flashcard[]>([]);
   const [showDefinition, setShowDefinition] = useState<boolean>(false);
@@ -18,10 +18,10 @@ const Home = () => {
   const fetchCards = async () => {
     try {
       setLoading(true);
-      const { flashCards } = await fetchValidFlashCards();
+      const { flashCards: fC } = await fetchValidFlashCards();
       setCurrCard(0);
-      setFlashCards(flashCards);
-      setTotalCards(flashCards.length);
+      setFlashCards(fC);
+      setTotalCards(fC.length);
     } catch (e) {
       console.log(e);
     } finally {
@@ -32,10 +32,10 @@ const Home = () => {
     try {
       const date = new Date();
       const nextBin = (card.bin < 11 ? card.bin + 1 : card.bin) as ValidBinNumbers;
-      date.setSeconds(date.getSeconds() + getNextAvailableTime(nextBin))
+      date.setSeconds(date.getSeconds() + getNextAvailableTime(nextBin));
       const values = {
         bin: correctGuess ? card.bin + 1 : 1,
-        correctGuesses: correctGuess ? card.correctGuesses + 1 : card.correctGuesses, 
+        correctGuesses: correctGuess ? card.correctGuesses + 1 : card.correctGuesses,
         incorrectGuesses: !correctGuess ? card.incorrectGuesses + 1 : card.incorrectGuesses,
         nextAvailableTime: date,
       };
@@ -47,7 +47,7 @@ const Home = () => {
     } finally {
       setLoading(false);
     }
-  }
+  };
 
   useEffect(() => {
     fetchCards();
@@ -61,30 +61,30 @@ const Home = () => {
 
   return (
     <Page>
-      <Container fullHeight fullWidth inline justifyContent="center" paddingTop='30px' paddingBottom='30px'>
-        {loading && <LoaderDark width={60} height={60} center/>}
+      <Container fullHeight fullWidth inline justifyContent="center" paddingTop="30px" paddingBottom="30px">
+        {loading && <LoaderDark width={60} height={60} center />}
         {(!loading && flashCards.length >= 1) && (
-          <Container block fullWidth paddingLeft='20px' paddingRight='20px'>
+          <Container block fullWidth paddingLeft="20px" paddingRight="20px">
             <Container fullWidth justifyContent="space-between" block inline alignItems="center">
-            <Container inline justifyContent='center' alignItems='center'>
-            <Container marginTop='10px' marginBottom='10px' marginRight='10px'>
-                <Text text={`${(totalCards - flashCards.length) + 1}/${totalCards} - `} />
+              <Container inline justifyContent="center" alignItems="center">
+                <Container marginTop="10px" marginBottom="10px" marginRight="10px">
+                  <Text text={`${(totalCards - flashCards.length) + 1}/${totalCards} - `} />
+                </Container>
+                <Text text={flashCards[currCard].name} />
               </Container>
-              <Text text={flashCards[currCard].name} />
-            </Container>
             </Container>
             {!showDefinition ? (
-              <Button text="Show definition" variant="tertiary" size="sm" onClick={() => setShowDefinition(true)}/>
+              <Button text="Show definition" variant="tertiary" size="sm" onClick={() => setShowDefinition(true)} />
             ) : (
               <>
                 <Text light text={flashCards[currCard].description} />
-                <Container inline alignItems='center'>
+                <Container inline alignItems="center">
                   <Text light text="Did you get the correct definition?" />
-                  <Container marginLeft='10px' marginRight='10px'>
-                    <Button text="I got it" variant='tertiary' onClick={() => updateAndGoToNextCard(flashCards[currCard], true)} />
+                  <Container marginLeft="10px" marginRight="10px">
+                    <Button text="I got it" variant="tertiary" onClick={() => updateAndGoToNextCard(flashCards[currCard], true)} />
                   </Container>
-                  <Container marginLeft='10px' marginRight='10px'>
-                    <Button text="I did not get it" variant='danger' onClick={() => updateAndGoToNextCard(flashCards[currCard], false)} />
+                  <Container marginLeft="10px" marginRight="10px">
+                    <Button text="I did not get it" variant="danger" onClick={() => updateAndGoToNextCard(flashCards[currCard], false)} />
                   </Container>
                 </Container>
               </>
