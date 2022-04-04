@@ -54,10 +54,13 @@ const Home = () => {
   }, []);
 
   useEffect(() => {
-    if (currCard === totalCards) {
+    // update cards every 5 secs
+    const interval = setInterval(() => {
       fetchCards();
-    }
-  }, [totalCards, currCard]);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <Page>
