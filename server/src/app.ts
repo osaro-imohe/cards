@@ -9,7 +9,6 @@ dotenv.config();
 const app = express();
 app.use(cors({
   origin: ['localhost:3000', 'https://flashcard-app-client.herokuapp.com/'],
-  credentials: true,
 }));
 app.use(bodyParser.json());
 app.set('sequelize', sequelize);
