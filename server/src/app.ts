@@ -1,9 +1,11 @@
 import cors from 'cors';
+import dotenv from 'dotenv';
 import express from 'express';
 import bodyParser from 'body-parser';
 import Routes from './routes';
 import { sequelize, syncDb } from './model';
 
+dotenv.config();
 const app = express();
 app.use(cors({
   origin: ['localhost:3000', 'https://flashcard-app-client.herokuapp.com/'],
