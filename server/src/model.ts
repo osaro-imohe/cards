@@ -6,7 +6,12 @@ const dbUser = 'postgres';
 const dbHost = 'localhost';
 const dbPassword = 'postgres';
 const connectionString = process.env.DATABASE_URL ?? `postgres://${dbUser}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`;
-const sequelize = new Sqlz(connectionString);
+const sequelize = new Sqlz(connectionString, {
+  dialect: 'postgres',
+  dialectOptions: {
+    rejectUnauthorized: false,
+  },
+});
 
 class Flashcard extends Sqlz.Model {}
 Flashcard.init(
