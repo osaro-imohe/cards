@@ -1,5 +1,8 @@
+import dotenv from 'dotenv';
+
 const Sqlz = require('sequelize');
 
+dotenv.config();
 const dbPort = 5432;
 const dbName = 'flashcard';
 const dbUser = 'postgres';
