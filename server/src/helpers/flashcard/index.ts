@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import { Flashcard, sequelize, Sqlz } from '../../model';
 
 class FlashcardHelper {
