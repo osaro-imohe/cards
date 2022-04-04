@@ -5,7 +5,7 @@ const dbName = 'flashcard';
 const dbUser = 'postgres';
 const dbHost = 'localhost';
 const dbPassword = 'postgres';
-const connectionString = `postgres://${dbUser}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`;
+const connectionString = process.env.DATABASE_URL ?? `postgres://${dbUser}:${dbPassword}@${dbHost}:${dbPort}/${dbName}`;
 const sequelize = new Sqlz(connectionString);
 
 class Flashcard extends Sqlz.Model {}
