@@ -56,7 +56,7 @@ const Home = () => {
   useEffect(() => {
     // update cards every 5 secs
     const interval = setInterval(() => {
-      if (!flashCards.length) {
+      if (flashCards.length === 0) {
         fetchCards();
       }
     }, 5000);
