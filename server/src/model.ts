@@ -9,7 +9,10 @@ const connectionString = process.env.DATABASE_URL ?? `postgres://${dbUser}:${dbP
 const sequelize = new Sqlz(connectionString, {
   dialect: 'postgres',
   dialectOptions: {
-    rejectUnauthorized: false,
+    encrypt: true,
+    ssl: {
+      rejectUnauthorized: false,
+    },
   },
 });
 
