@@ -8,7 +8,7 @@ import { sequelize, syncDb } from './model';
 dotenv.config();
 const app = express();
 app.use(cors({
-  origin: ['localhost:3000', 'https://flashcard-app-client.herokuapp.com/'],
+  origin: ['localhost:3000', 'https://flashcard-app-client.herokuapp.com'],
 }));
 app.use(bodyParser.json());
 app.set('sequelize', sequelize);
