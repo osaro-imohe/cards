@@ -1,8 +1,7 @@
-import flashCardHelper from './flashcard'
-
+import flashCardHelper from './flashcard';
 
 const helpers = {
-	flashCards: flashCardHelper,
+  flashCards: flashCardHelper,
 };
 
 export default helpers;
