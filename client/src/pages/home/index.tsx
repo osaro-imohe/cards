@@ -62,7 +62,7 @@ const Home = () => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [flashCards]);
 
   return (
     <Page>
