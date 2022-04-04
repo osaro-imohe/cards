@@ -1,9 +1,9 @@
-name: Deploy to heroku -- develop.
+name: Deploy server to heroku -- develop.
 
 on:
   push:
     branches:
-      - develop
+      - main
     paths:
       - 'server/**'
 
