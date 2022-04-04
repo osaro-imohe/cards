@@ -32,7 +32,7 @@ const Home = () => {
     try {
       const date = new Date();
       const nextBin = (card.bin < 11 ? card.bin + 1 : card.bin) as ValidBinNumbers;
-      date.setSeconds(date.getSeconds() + getNextAvailableTime(nextBin));
+      date.setSeconds(date.getSeconds() + (!correctGuess ? 0 : getNextAvailableTime(nextBin)));
       const values = {
         bin: correctGuess ? card.bin + 1 : 1,
         correctGuesses: correctGuess ? card.correctGuesses + 1 : card.correctGuesses,
