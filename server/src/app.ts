@@ -5,7 +5,10 @@ import Routes from './routes';
 import { sequelize, syncDb } from './model';
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: ['localhost:3000', 'https://flashcard-app-client.herokuapp.com/'],
+  credentials: true,
+}));
 app.use(bodyParser.json());
 app.set('sequelize', sequelize);
 app.set('models', sequelize.models);
