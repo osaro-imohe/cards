@@ -32,8 +32,8 @@ Routes.forEach((route: any) => {
 const run = async () => {
   try {
     syncDb();
-    app.listen(process.env.PORT ?? 8080, () => {
-      console.log(`Application is running on ${process.env.PORT ?? 8080}`);
+    app.listen(process.env.PORT || 8080, () => {
+      console.log(`Application is running on ${process.env.PORT || 8080}`);
     });
   } catch (e) {
     console.error(`An error occurred: ${JSON.stringify(e)}`);
